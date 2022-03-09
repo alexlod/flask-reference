@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = None
 db = SQLAlchemy()
@@ -12,6 +13,8 @@ def init_app(local_app):
   global app
   app = local_app
   db.init_app(app)
+
+  Migrate(app, db)
 
 def commit():
   try:
