@@ -1,3 +1,4 @@
+import factory
 from sqlalchemy import Column, Integer
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -8,6 +9,14 @@ db = SQLAlchemy()
 class Foo(db.Model):
   __tablename__ = 'foos'
   id = Column(Integer, primary_key=True)
+
+class FooFactory(factory.alchemy.SQLAlchemyModelFactory):
+  class Meta:
+    model = Foo
+    sqlalchemy_session = db.session
+    sqlalchemy_session_persistence = 'commit'
+
+  id = factory.Sequence(lambda n: n)
 
 def init_app(local_app):
   global app
