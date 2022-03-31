@@ -17,6 +17,6 @@ python -m pytest
 Other modules this reference could incorporate:
 
  * OpenAPI documentation with apispec and Swagger (swagger-ui) for API documentation and experimentation
- * Marshmallow for model validation, integrated with SQLAlchemy
+ * Marshmallow for API JSON validation and serializing JSON to Python, possibly integrated with SQLAlchemy for database-level validation as well
  * Flask-RESTful
  
